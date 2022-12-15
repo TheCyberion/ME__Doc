@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RegistrationController!{% endblock %}
+
+{% block body %}
+ <div class="card text-white  bg-info mb-3" style="max-width: 20rem; align-center">
+  <div class="card-header">Inscription</div>
+  <div class="card-body">
+    <h4 class="card-title">Vos Données</h4>
+    {{ form(RegistrationFormType) }}
+  
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+<h1 class="display-4 text-center my-4">BACKOFFICE</H1>
+
+<p class="text-center">BienVenue sur l'espace Medecin</p>
+
+<a href="{{path('app_admin_crud_rendez_vous_c')}}" class="col-md-6 offset-md-3 btn btn-dark">GESTION DES RENDEZVOUSC</a>
+
+<a href="{{path('app_admin_crud_rendez_vous_v')}}" class="col-md-6 offset-md-3 btn btn-dark">GESTION DES RENDEZVOUSV</a>
+
+<a href="{{path('app_admin_crud_disponibilite')}}" class="col-md-6 offset-md-3 btn btn-dark">GESTION DISPONIBILITE</a>
+
+<a href="{{path('app_admin_crud_membre')}}" class="col-md-6 offset-md-3 btn btn-dark">GESTION DES MEMBRES</a>
+
+<a href="{{path('app_admin_crud_tchat')}}" class="col-md-6 offset-md-3 btn btn-dark">GESTION DES TCHATS</a>
+
+{% endblock %}

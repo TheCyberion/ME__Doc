@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche Médecin{% endblock %}
+
+{% block body %}
+<div class="card text-white  bg-info mb-3" style="max-width: 20rem; align-center">
+  <div class="card-header">Recherche médecin à proximité </div>
+  <div class="card-body">
+    <h4 class="card-title">Vos besoins</h4>
+    {{ form(RechercheMedecinFormType) }}
+  
+    </div>
+</div>
+{% endblock %}

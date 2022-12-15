@@ -1,0 +1,14 @@
+{% block _User_roles %}
+
+	{% for role in field.value %}
+		{% if role == 'ROLE_USER' %}
+			Patient
+		{% elseif role == 'ROLE_ADMIN' %}
+			Medecin
+		{% endif %}
+
+		{# {{ role }} permet d'afficher le role (format ROLE_XXX) #}
+
+	{% endfor %}
+
+{% endblock %}

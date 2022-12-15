@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Gestion des membres{% endblock %}
+
+{% block body %}
+<table class="table table-dark table-striped">
+  
+		{# {% if membre = 'patient' %}{ #}
+    <thead>
+        <th>nom_patient</th>
+		<th>prenom_patient</th>
+		<th>E-mail</th>
+		<th>Password</th>
+		<th>Categorie</th>
+		<th>Age</th>
+		<th>Sexe</th>
+		<th>Telephone</th>
+		<th>Taille</th>
+        <th>Poids</th>
+    </thead>
+
+    <tbody>
+    {% for membre in membres %}
+        
+    
+    <tr>
+
+    <td>{{membre.nom_patient}}</td>
+      <td>{{membre.prenom_patient}}</td>
+      <td>{{membre.email}}</td>
+	  <td>{{membre.password}}</td>
+	  <td>{{membre.categorie}}</td>
+      <td>{{membre.age}}</td>
+	  <td>{{membre.sexe }}
+	  <td>{{membre.telephone}}</td>
+    <td>{{membre.taille}}</td>
+    <td>{{membre.poids}}</td>
+    <td>
+  {% endfor %}
+   {# }else{ #}
+
+
+      <thead>
+        <th>nom_medecin</th>
+		<th>prenom_medecin</th>
+		<th>E-mail</th>
+		<th>Password</th>
+		<th>Specialite</th>
+		<th>Numero_voie</th>
+		<th>Voie</th>
+		<th>Ville</th>
+		<th>code_postal</th>
+        <th>Rpps</th>
+    </thead>
+
+    <tbody>
+    {% for membre in membres %}
+        
+    
+    <tr>
+
+    <td>{{membre.nom_medecin}}</td>
+      <td>{{membre.prenom_medecin}}</td>
+      <td>{{membre.email}}</td>
+	  <td>{{membre.password}}</td>
+    <td>{{membre.specialite}}
+    <td>{{membre.numero_voie}}
+	  <td>{{membre.voie}}</td>
+      <td>{{membre.cp}}</td>
+	  <td>{{membre.createdAt|date('d/m/Y à H:i:s') }}
+	  {# <td>{{membre.telephone}}</td> #}
+    <td>
+   }
+	<a class=" btn btn-danger" onclick="return confirm('Voulez-vous supprimer ce membre ?')" href="{{path ('app_admin_crud_membre_delete', {id: membre.id }) }}"><i class="fas fa-trash"></i></a></td>
+    {# <td>{{membre.}}</td> #}
+    
+    
+    </tr>
+    {% endfor %}
+   {# {% endif %} #}
+
+   
+    </tbody>
+
+</table>
+{% endblock %}

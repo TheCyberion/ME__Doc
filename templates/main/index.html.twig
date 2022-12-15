@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur ME'Doc 
+{% endblock %}
+
+{% block body %}
+	<h1 class="display-4 text-center my-4">Accueil</H1>
+
+	<p class="text-center">medecin ou patient creez votre espace!</p>
+
+  {# {% if %} #}
+  <div class="d-flex justify-content-center">
+	<div class="card text-white bg-info mb-3 d-flex justify-content-center" style="max-width: 20rem;">
+
+  
+		<div class="card-header "></div>
+		<div class="card-body">
+			<h4 class="card-title">Inscription Patient</h4>
+			<a class="text-white" href="{{path('app_registration', {param:"patient"})}}"><button class="btn btn-lg btn-primary" >
+				
+			</button></a>
+		</div>
+	</div>
+	</div></div>
+
+<div class="d-flex justify-content-center">
+	<div class="card text-white bg-info mb-3 d-flex justify-content-center" style="max-width: 20rem;">
+	<div class="card-header "></div>
+		<div class="card-body">
+			<h4 class="card-title">Inscription Medecin</h4>
+			<a class="text-white" href="{{path('app_registration', {param:"medecin"})}}"><button class="btn btn-lg btn-primary" >
+			</button></a>
+				
+			
+		</div>
+	</div>
+</div></div>
+
+
+{# {% endif %} #}
+{% endblock %}
+
