@@ -3,18 +3,48 @@
 {% block title %}Hello AdminCrudRendezVousCController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h2>RendezVousC</h2>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <table class="table table-bordered text-center mt3">
+        <thead>
+            <tr>
+                <th>nom patient</th>
+                <th>prenom patient</th>
+                <th>nom medecin</th>
+                <th>prenom medecin</th>
+                <th>specialite</th>
+                <th>nature rendez vous</th>
+                <th>numero_voie</th>
+                <th>voie</th>
+                <th>date/heure</th>
+                <th>departement</th>
+                <th>code postale</th>
+                <th>ville</th>
+                <th>id patient</th>
+                <th>id medecin</th>
+            </tr>    
+        </thead>
+        <tbody>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/darka/OneDrive/Bureau/Projet Final/Me__Doc/Me__Doc/src/Controller/AdminCrudRendezVousCController.php'|file_link(0) }}">src/Controller/AdminCrudRendezVousCController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/darka/OneDrive/Bureau/Projet Final/Me__Doc/Me__Doc/templates/admin_crud_rendez_vous_c/index.html.twig'|file_link(0) }}">templates/admin_crud_rendez_vous_c/index.html.twig</a></code></li>
-    </ul>
-</div>
+
+            {% for info in rendezvous %}
+                <tr>
+                    <td>{{info.nom.patient}}</td>
+                    <td>{{info.prenom.patient}}</td>
+                    <td>{{info.nom.medecin}}</td>
+                    <td>{{info.prenom.medecin}}</td>
+                    <td>{{info.specialite}}</td>
+                    <td>{{info.nature.rendezvous}}</td>
+                    <td>{{info.numero.voie}}</td>
+                    <td>{{info.voie}}</td>
+                    <td>{{info.date}}</td>
+                    <td>{{info.departement}}</td>
+                    <td>{{info.code.postal}}</td>
+                    <td>{{info.id.patient}}</td>
+                    <td>{{info.id.medecin}}</td>
+                <tr>
+            {% endfor %}
+        </tbody>
+    </table>
+                    
 {% endblock %}

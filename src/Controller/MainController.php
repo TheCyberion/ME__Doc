@@ -23,18 +23,33 @@ class MainController extends AbstractController
         ]);
     }
 
-    #[Route('app/profile', name: 'profile' )]
+    #[Route('/profile', name: 'app_profile' )]
     public function profile()
     {
-        return $this->render('app/profile');
+        return $this->render('main/profile.html.twig',  [
+            'controller_name' => 'MainController',
+        ] );
     }
-    #[Route('app/recherchemedecin/', name:'recherche_medecin')]
-    public function recherhemedecin(MembreRepository $repo)
-    {
-        $doc = $repo;
 
-        return $this->redirectToRoute('app_rendez_vous_C'); 
+    
+    #[Route('/main/rdv' , name: 'app_main_rdv')]
+    public function rdv()
+    {
+        return $this->render('/main/rdv/rendezvous.html.twig');
     }
+
+   #[Route('/traitements' , name: 'traitements')]
+   public function traitements()
+   {
+        return $this->render('/main/traitements/traitements.html.twig');
+   }
+
+   #[Route('/main/dossier_medical/dossMed')]
+   public function dossMed()
+   {
+        return $this->render('/main/dossier_medical/dossMed.html.twig');
+   }
+
     // #[Route('/main/rendezvousC/edit/{id}', name: 'app_rendezvousC_edit')]
     // public function new_rendezVousC( EntityManagerInterface $manager, Request $rq, RendezVousC $rendezVousC = null)
     // {
@@ -109,7 +124,7 @@ class MainController extends AbstractController
 
     //     return $this->render("main/profile.html.twig", [
     //         'rdv' => $rdvV
-    //     ]);
+     //    ]);
     // }
 
 }

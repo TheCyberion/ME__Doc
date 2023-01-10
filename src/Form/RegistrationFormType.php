@@ -89,6 +89,8 @@ class RegistrationFormType extends AbstractType
     ->add('voie')
     ->add('ville')
     ->add('code_postal')
+    ->add('region')
+    ->add('departement')
     ->add('rpps')
     ->add('valider', SubmitType::class);
  }

@@ -80,15 +80,19 @@ class Membre implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'nom_patient', targetEntity: RendezVousC::class)]
     private Collection $rendezVousC;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255,nullable:true)]
     private ?string $region = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable:true)]
     private ?string $departement = null;
+
+    #[ORM\OneToMany(mappedBy: 'nom_patient', targetEntity: RendezVous::class)]
+    private Collection $rendezVouses;
 
     public function __construct()
     {
         $this->rendezVousC = new ArrayCollection();
+        $this->rendezVouses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -422,6 +426,36 @@ class Membre implements UserInterface, PasswordAuthenticatedUserInterface
     public function setDepartement(string $departement): self
     {
         $this->departement = $departement;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, RendezVous>
+     */
+    public function getRendezVouses(): Collection
+    {
+        return $this->rendezVouses;
+    }
+
+    public function addRendezVouse(RendezVous $rendezVouse): self
+    {
+        if (!$this->rendezVouses->contains($rendezVouse)) {
+            $this->rendezVouses->add($rendezVouse);
+            $rendezVouse->setNomPatient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRendezVouse(RendezVous $rendezVouse): self
+    {
+        if ($this->rendezVouses->removeElement($rendezVouse)) {
+            // set the owning side to null (unless already changed)
+            if ($rendezVouse->getNomPatient() === $this) {
+                $rendezVouse->setNomPatient(null);
+            }
+        }
 
         return $this;
     }
