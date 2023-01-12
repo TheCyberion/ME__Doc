@@ -19,8 +19,8 @@ class RegistrationFormType extends AbstractType
 
         $builder
             ->add('email')
-            ->add('roles', ChoiceType::class, array('attr' => array('class' => 'form-control', 'style' => 'margin:5px 0;'),
-            'choices'=> array('ROLE_USER'=> array ('yes'=>'ROLE_USER'))))
+            // ->add('roles', ChoiceType::class, array('attr' => array('class' => 'form-control', 'style' => 'margin:5px 0;'),
+            // 'choices'=> array('ROLE_USER'=> array ('yes'=>'ROLE_USER'))))
             ->add('password')
             ->add('prenom_patient')
             ->add('nom_patient')
@@ -42,7 +42,8 @@ class RegistrationFormType extends AbstractType
                     ])
             ->add('taille')
             ->add('poids')
-            ->add('valider', SubmitType::class)
+            // ->add('valider', SubmitType::class)
+            // ->add('createdAt',)
             // ->add('nom_medecin')
             // ->add('prenom_medecin')
             // ->add('specialite')
@@ -58,8 +59,9 @@ class RegistrationFormType extends AbstractType
  else {
     $builder
             ->add('email')
-            ->add('roles', ChoiceType::class, array('attr' => array('class' => 'form-control', 'style' => 'margin:5px 0;'),
-            'choices'=> array('ROLE_ADMIN'=> array ('yes'=>'ROLE_ADMIN'))))
+            // ->add('roles', ChoiceType::class, array('attr' => array('class' => 'form-control', 'style' => 'margin:5px 0;'),
+            // 'choices'=> array('ROLE_ADMIN'=> array ('yes'=>'ROLE_ADMIN'))))
+            ->add('password')
             // ->add('prenom_patient')
             // ->add('nom_patient')
             // ->add('categorie', ChoiceType::class, [

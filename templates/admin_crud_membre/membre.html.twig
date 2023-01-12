@@ -1,47 +1,35 @@
-{% extends 'base.html.twig' %}
+{% extends '/base.html.twig' %}
 
 {% block title %} Gestion des membres{% endblock %}
 
 {% block body %}
-
- <div class="d-flex justify-content-center">
-	<div class="card text-white bg-info mb-3 d-flex justify-content-center" style="max-width: 20rem;">
-
+<h2>Liste Membres</h2>
   
-		<div class="card-header "></div>
-		<div class="card-body">
-			<h4 class="card-title">Inscription Patient</h4>
-			<a class="text-white" href="{{path('app_registration', {param:"patient"})}}"><button class="btn btn-lg btn-primary" >
-				
-			</button></a>
-		</div>
-	</div>
-	</div></div>
-
-<div class="d-flex justify-content-center">
-	<div class="card text-white bg-info mb-3 d-flex justify-content-center" style="max-width: 20rem;">
-	<div class="card-header "></div>
-		<div class="card-body">
-			<h4 class="card-title">Inscription Medecin</h4>
-			<a class="text-white" href="{{path('app_registration', {param:"medecin"})}}"><button class="btn btn-lg btn-primary" >
-			</button></a>
-				
+	<table>
+	<h2>Patient</h2>
+	<div class="card-body">
 			
+			<a class="text-white" href="{{path('app_registration', {param:"patient"})}}"><button class="btn btn-lg btn-warning" >ajouter patient
+				
+			</button></a>
+			<a class="text-white" href="#"><button class="btn btn-lg btn-info" >modifier/supprimer patient
+				
+			</button></a>
 		</div>
-	</div>
-</div></div>
-<table class="table table-dark table-striped">
-  
-		{# {% if membre = 'patient' %}{ #}
-    <thead>
-        <th>nom_patient</th>
+	</table>
+	<table class="table table-bordered text-center mt3">
+		 {# {% if membres is same as'patient' %}{ #}
+
+
+     <thead>
 		<th>prenom_patient</th>
-		<th>E-mail</th>
-		<th>Password</th>
+        <th>nom_patient</th>
 		<th>Categorie</th>
 		<th>Age</th>
-		<th>Sexe</th>
 		<th>Telephone</th>
+		<th>Sexe</th>
+		<th>E-mail</th>
+		<th>Password</th>
 		<th>Taille</th>
         <th>Poids</th>
     </thead>
@@ -52,20 +40,33 @@
     
     <tr>
 
-    <td>{{membre.nom_patient}}</td>
-      <td>{{membre.prenom_patient}}</td>
-      <td>{{membre.email}}</td>
-	  <td>{{membre.password}}</td>
-	  <td>{{membre.categorie}}</td>
-      <td>{{membre.age}}</td>
-	  <td>{{membre.sexe }}
-	  <td>{{membre.telephone}}</td>
-    <td>{{membre.taille}}</td>
-    <td>{{membre.poids}}</td>
-    <td>
-  {% endfor %}
-   {# }else{ #}
-
+      <td>{{membre.PrenomPatient}}</td>
+    <td>{{membre.NomPatient}}</td>
+	  <td>{{membre.Categorie}}</td>
+      <td>{{membre.Age}}</td>
+	  <td>{{membre.Telephone}}</td>
+	  <td>{{membre.Sexe }}
+      <td>{{membre.Email}}</td>
+	  <td>{{membre.Password}}</td>
+    <td>{{membre.Taille}}</td>
+    <td>{{membre.Poids}}</td>
+    </tr>
+  {% endfor %} 
+  
+ </table>
+	<table>
+ <h2>Médecins</h2>
+ <div class="card-body">
+			
+			<a class="text-white" href="{{path('app_registration', {param:"medecin"})}}"><button class="btn btn-lg btn-warning" >ajouter medecin
+				
+			</button></a>
+			<a class="text-white" href="#"><button class="btn btn-lg btn-info" >modifier/supprimer medecin
+				
+			</button></a>
+		</div>
+	</table>
+<table class="table table-bordered text-center mt3">
 
       <thead>
         <th>nom_medecin</th>
@@ -88,30 +89,30 @@
     
     <tr>
 
-    <td>{{membre.nom_medecin}}</td>
-      <td>{{membre.prenom_medecin}}</td>
-      <td>{{membre.email}}</td>
-	  <td>{{membre.password}}</td>
-    <td>{{membre.specialite}}
-    <td>{{membre.numero_voie}}
-	  <td>{{membre.voie}}</td>
-      <td>{{membre.cp}}</td>
-	  <td>{{membre.region}}</td>
-	  <td>{{membre.departement}}</td>
+      <td>{{membre.PrenomMedecin}}</td>
+    <td>{{membre.NomMedecin}}</td>
+      <td>{{membre.Email}}</td>
+	  <td>{{membre.Password}}</td>
+    <td>{{membre.Specialite}}
+    <td>{{membre.NumeroVoie}}
+	  <td>{{membre.Voie}}</td>
+      <td>{{membre.CodePostal}}</td>
+	  <td>{{membre.Region}}</td>
+	  <td>{{membre.Departement}}</td> 
 	  {# <td>{{membre.createdAt|date('d/m/Y à H:i:s') }} #}
 	  {# <td>{{membre.telephone}}</td> #}
-    <td>
-   }
-	<a class=" btn btn-danger" onclick="return confirm('Voulez-vous supprimer ce membre ?')" href="{{path ('app_admin_crud_membre_delete', {id: membre.id }) }}"><i class="fas fa-trash"></i></a></td>
-    {# <td>{{membre.}}</td> #}
+     <td>
+   
+	<a class=" btn btn-danger" onclick="return confirm('Voulez-vous supprimer ce membre ?')" href="{{path ('app_admin_crud_membre', {id: membre.id }) }}"><i class="fas fa-trash"></i></a></td> 
     
     
-    </tr>
-    {% endfor %}
-   {# {% endif %} #}
+    
+     </tr>
+    {% endfor %} 
+    {# {% endif %}  #}
 
    
     </tbody>
 
-</table> 
+</table>  
 {% endblock %}

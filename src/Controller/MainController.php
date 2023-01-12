@@ -38,10 +38,12 @@ class MainController extends AbstractController
         return $this->render('/main/rdv/rendezvous.html.twig');
     }
 
-   #[Route('/traitements' , name: 'traitements')]
+   #[Route('/traitements' , name: 'app_traitements')]
    public function traitements()
    {
-        return $this->render('/main/traitements/traitements.html.twig');
+        return $this->render('/main/traitements.html.twig',  [
+            'controller_name' => 'MainController',
+        ] );
    }
 
    #[Route('/main/dossier_medical/dossMed')]

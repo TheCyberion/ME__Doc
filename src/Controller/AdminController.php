@@ -15,4 +15,14 @@ class AdminController extends AbstractController
             'controller_name' => 'AdminController',
         ]);
     }
+    
+    #[Route('/admin/profile_medecin', name: 'admin/profile_medecin.html.twig')]
+    public function profile()
+    {
+        return $this->render('admin/profile_medecin.html.twig',  [
+            'controller_name' => 'MainController',
+        ] );
+    }
+
+    
 }

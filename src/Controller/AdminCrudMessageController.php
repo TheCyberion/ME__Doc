@@ -13,7 +13,7 @@ class AdminCrudTchatController extends AbstractController
     public function index(MessagesRepository $repo): Response
     {
         return $this->render('admin_crud_message/message.html.twig', [
-            'controller_name' => 'AdminCrudTchatController',
+            'controller_name' => 'AdminCrudMessageController',
         ]);
     }
 }

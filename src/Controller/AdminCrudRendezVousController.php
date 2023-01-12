@@ -14,7 +14,7 @@ class AdminCrudRendezVousController extends AbstractController
     public function index(RendezVousRepository $repo): Response
     {
         $rdvs=$repo->findAll();
-        return $this->render('admin_crud_rendez_vous/index.html.twig', [
+        return $this->render('admin_crud_rendez_vous/rdv.html.twig', [
             'rdvs' => $rdvs,
         ]);
     }

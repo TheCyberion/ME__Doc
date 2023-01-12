@@ -13,7 +13,7 @@ class RendezVous
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'rendezVouses')]
+    #[ORM\ManyToOne(inversedBy: 'rendezVous')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Membre $nom_patient = null;
 

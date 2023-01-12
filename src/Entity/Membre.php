@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\MembreRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use App\Repository\MembreRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: MembreRepository::class)]
 class Membre implements UserInterface, PasswordAuthenticatedUserInterface
@@ -77,8 +78,7 @@ class Membre implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column( nullable:true)]
     private ?int $rpps = null;
 
-    #[ORM\OneToMany(mappedBy: 'nom_patient', targetEntity: RendezVousC::class)]
-    private Collection $rendezVousC;
+    
 
     #[ORM\Column(length: 255,nullable:true)]
     private ?string $region = null;
@@ -87,12 +87,17 @@ class Membre implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $departement = null;
 
     #[ORM\OneToMany(mappedBy: 'nom_patient', targetEntity: RendezVous::class)]
-    private Collection $rendezVouses;
+    private Collection $rendezVous;
+
+    // #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    // private ?\DateTimeInterface $createdAt = null;
+
+   
 
     public function __construct()
     {
-        $this->rendezVousC = new ArrayCollection();
-        $this->rendezVouses = new ArrayCollection();
+        
+        $this->rendezVous = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -376,35 +381,7 @@ class Membre implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, RendezVousC>
-     */
-    public function getRendezVousC(): Collection
-    {
-        return $this->rendezVousC;
-    }
-
-    public function addRendezVousC(RendezVousC $rendezVousC): self
-    {
-        if (!$this->rendezVousC->contains($rendezVousC)) {
-            $this->rendezVousC->add($rendezVousC);
-            $rendezVousC->setNomPatient($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRendezVousC(RendezVousC $rendezVousC): self
-    {
-        if ($this->rendezVousC->removeElement($rendezVousC)) {
-            // set the owning side to null (unless already changed)
-            if ($rendezVousC->getNomPatient() === $this) {
-                $rendezVousC->setNomPatient(null);
-            }
-        }
-
-        return $this;
-    }
+    
 
     public function getRegion(): ?string
     {
@@ -433,30 +410,42 @@ class Membre implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return Collection<int, RendezVous>
      */
-    public function getRendezVouses(): Collection
+    public function getRendezVous(): Collection
     {
-        return $this->rendezVouses;
+        return $this->rendezVous;
     }
 
-    public function addRendezVouse(RendezVous $rendezVouse): self
+    public function addRendezVous(RendezVous $rendezVous): self
     {
-        if (!$this->rendezVouses->contains($rendezVouse)) {
-            $this->rendezVouses->add($rendezVouse);
-            $rendezVouse->setNomPatient($this);
+        if (!$this->rendezVous->contains($rendezVous)) {
+            $this->rendezVous->add($rendezVous);
+            $rendezVous->setNomPatient($this);
         }
 
         return $this;
     }
 
-    public function removeRendezVouse(RendezVous $rendezVouse): self
+    public function removeRendezVous(RendezVous $rendezVous): self
     {
-        if ($this->rendezVouses->removeElement($rendezVouse)) {
+        if ($this->rendezVous->removeElement($rendezVous)) {
             // set the owning side to null (unless already changed)
-            if ($rendezVouse->getNomPatient() === $this) {
-                $rendezVouse->setNomPatient(null);
+            if ($rendezVous->getNomPatient() === $this) {
+                $rendezVous->setNomPatient(null);
             }
         }
 
         return $this;
     }
+
+    // public function getCreatedAt(): ?\DateTimeInterface
+    // {
+    //     return $this->createdAt;
+    // }
+
+    // public function setCreatedAt(\DateTimeInterface $createdAt): self
+    // {
+    //     $this->createdAt = $createdAt;
+
+    //     return $this;
+    // }
 }

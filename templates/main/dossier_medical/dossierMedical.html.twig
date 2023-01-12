@@ -1,1 +1,49 @@
 {% extends 'base.html.twig' %}
+
+{% block title %}Mon dossier médical{% endblock %}
+
+
+    <h2>Dossier Médicaux</h2>
+
+    <table class="table table-bordered text-center mt3">
+        <thead>
+            <tr>
+                <th>id patient</th>
+                <th>nom patient</th>
+                <th>prenom patient</th>
+                <th>date</th>
+                <th>lieu</th>
+                <th>nature rendez vous</th>
+                <th>resultat examen</th>
+                <th>ordonance</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+             {% for info in dosMed %}
+
+                <tr>
+
+                    <td>{{info.id.patient}}</td>
+                    <td>{{info.prenom.patient}}</td>
+                    <td>{{info.nom.patient}}</td>
+                    <td>{{info.date}}</td>
+                    <td>{{info.lieu}}</td>
+                    <td>{{info.nature.rendez.vous}}</td>
+                    <td>{{info.resultat.examen}}</td>
+                    <td>{{info.ordonance}}</td>
+                    {# <td>{{info..}}</td>
+                    <td>{{info..}}</td>
+                    <td>{{info..}}</td>
+                    <td>{{info..}}</td>  #}
+                </tr>
+            {% endfor %}    
+        </tbody>
+    </table>                   
+{% endblock %}
+
+        
